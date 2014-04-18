@@ -1,0 +1,16 @@
+{
+  "name": "APIBunnySolver",
+  "version": "0.0.1",
+  "description": "APIBunny Solver",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jschmid/APIBunnySolver.git"
+  },
+  "author": "jonas.schmid@",
+  "license": "MIT",
+  "dependencies": {
+    "async": "*",
+    "node-rest-client": "*"
+  }
+}
