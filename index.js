@@ -69,7 +69,7 @@ var showMaze = function() {
     for(var column in r) {
       var obj = r[column];
 
-      console.log('[' + row + ',' + column + '] ' + obj.name);
+      console.log('[' + row + ',' + column + ',' + obj.id + ',' + obj.type + '] ' + obj.name);
     }
   }
 }
