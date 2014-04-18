@@ -14,7 +14,8 @@ var processCell = function (cell, callback) {
 var q = async.queue(processCell, 1);
 
 q.drain = function() {
-    console.log('All items have been processed');
+    console.log('All items have been downloaded');
+    showMaze();
 }
 
 var fetchMaze = function(data, response) {
@@ -32,7 +33,7 @@ var fetchCell = function(cell, callback) {
   return function(data, response) {
     var obj = JSON.parse(data);
     var links = obj.cells[0].links;
-    console.log(links);
+    addObj(obj, cell.row, cell.column);
 
     checkCell(links, 'east', cell.row, cell.column + 1);
     checkCell(links, 'west', cell.row, cell.column - 1);
@@ -52,6 +53,24 @@ var checkCell = function(links, direction, row, column) {
       'row': row,
       'column' : column
     });
+  }
+}
+
+var addObj = function(obj, row, column) {
+  if(!allCells[row]) {
+    allCells[row] = new Array();
+  }
+  allCells[row][column] = obj.cells[0];
+}
+
+var showMaze = function() {
+  for(var row in allCells) {
+    var r = allCells[row];
+    for(var column in r) {
+      var obj = r[column];
+
+      console.log('[' + row + ',' + column + '] ' + obj.name);
+    }
   }
 }
 
